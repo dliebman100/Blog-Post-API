@@ -1,0 +1,13 @@
+### API calls
+
+### GET all blogposts
+GET http://localhost:3000/api/blogposts HTTP/1.1
+
+### GET a blogpost by ID
+GET http://localhost:3000/api/blogposts/13 HTTP/1.1
+
+### GET user
+GET http://localhost:3000/api/user/ HTTP/1.1
+
+### GET todos
+GET http://localhost:3000/api/todos/ HTTP/1.1
