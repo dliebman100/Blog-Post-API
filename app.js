@@ -7,7 +7,7 @@ app.get("/", function (req, res) {
   res.send("You have reached the top-level route handler with a GET");
 });
 
-// add routes
+// add router app
 require("./src/routes/blogposts.route")(app);
 require("./src/routes/user.route")(app);
 require("./src/routes/todos.route")(app);

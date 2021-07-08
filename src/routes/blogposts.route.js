@@ -29,5 +29,5 @@ module.exports = (app) => {
   router.get("/:id", controller.findById);
   // res.send("reached the router to get blogpost ID");
 
-  app.use("/api/blogpost", router);
+  app.use("/api/blogposts", router);
 };
