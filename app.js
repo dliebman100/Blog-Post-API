@@ -3,6 +3,7 @@ const express = require("express");
 
 const app = express();
 
+// route methods
 app.get("/", function (req, res) {
   res.send("You have reached the top-level route handler with a GET");
 });
