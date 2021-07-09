@@ -5,10 +5,7 @@ CONTROLLER:
 * Back in your router file inside the app export, add a require for your controller.
 
 * Also in the router, modify your GET handler to call the findAll() method in your new controller. Start your app
-
-* Verify it works by browsing to http://localhost:3000/api/blogposts/ (Links to an external site.) and also verify that http://localhost:3000/ (Links to an external site.) still works.  NOTE:  Check the message for /api/blogposts carefully to make it is coming from the controller.
 */
-
 const axios = require("axios");
 
 exports.findAll = (req, res) => {
@@ -25,7 +22,42 @@ exports.findAll = (req, res) => {
 exports.findById = (req, res) => {
   // res.send(`You asked for blog posts ${req.params.id}`);
   axios
-    .get(`https://jsonplaceholder.typicode.com/posts/ ${req.params.id}`)
+    .get(`https://jsonplaceholder.typicode.com/posts/${req.params.id}`)
+    .then((apicall) => {
+      res.send(apicall.data);
+    }).catch(error => {
+      console.log(error);
+    })
+    ;
+  
+};
+
+// need 2 params in post function call
+exports.create = (req, res) => {
+  axios
+    .post("https://jsonplaceholder.typicode.com/posts", {
+      title: req.body.title,
+      body: req.body.body,
+      userId: req.body.userId,
+    })
+    .then((apicall) => {
+      res.send(apicall.data);
+    });
+};
+
+exports.update = (req, res) => {
+  axios
+    .put("https://jsonplaceholder.typicode.com/posts/" +req.params.id, {
+      title: req.body.title,
+    })
+    .then((apicall) => {
+      res.send(apicall.data);
+    });
+};
+
+exports.deleteById = (req, res) => {
+  axios
+    .delete("https://jsonplaceholder.typicode.com/posts/" +req.params.id)
     .then((apicall) => {
       res.send(apicall.data);
     });

@@ -15,7 +15,7 @@ module.exports = (app) => {
   const router = require("express").Router();
 
   // inside the app export, add a require for your controller.
-  const controller = require("../controllers/blogposts.controller");
+  const controller = require("../controllers/blogpost.controller");
 
   //   router.get("/", function (req, res) {
   //     res.send("You have reached the router for all blog posts");
@@ -29,5 +29,12 @@ module.exports = (app) => {
   router.get("/:id", controller.findById);
   // res.send("reached the router to get blogpost ID");
 
-  app.use("/api/blogposts", router);
+  // create a blog post
+  router.post("/", controller.create);
+
+  router.put("/:id", controller.update);
+
+  router.delete("/:id", controller.deleteById);
+
+  app.use("/api/blogpost", router);
 };
